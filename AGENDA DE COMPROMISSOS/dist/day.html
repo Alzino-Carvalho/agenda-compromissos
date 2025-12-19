@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agenda - Dia</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1 id="dayTitle">Dia</h1>
+    <div class="controls">
+      <a href="index.html" class="btn">◀ Voltar</a>
+    </div>
+  </header>
+
+  <main>
+    <div id="daySlots" class="day-detail"></div>
+  </main>
+
+  <footer>
+    <small>Pressione Enter ou clique em Salvar para gravar o compromisso.</small>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Inicia a página de detalhe com base no query param ?date=YYYY-MM-DD
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const date = params.get('date');
+      if (!date) {
+        document.getElementById('dayTitle').textContent = 'Data inválida';
+        return;
+      }
+      document.getElementById('dayTitle').textContent = formatHeader(new Date(date));
+      renderDayDetail(document.getElementById('daySlots'), date);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agenda - Visão Geral</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Agenda de Compromissos</h1>
+    <div class="controls">
+      <div id="weekLabel" aria-live="polite">Semana atual</div>
+      <button id="prevWeekBtn" class="btn" title="Abrir semana anterior em nova aba">← Semana anterior</button>
+      <button id="todayBtn" class="btn" title="Ir para a semana atual">Hoje</button>
+      <button id="nextWeekBtn" class="btn" title="Abrir próxima semana em nova aba">Próxima semana →</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="week-wrapper">
+      <div id="daysContainer" class="days-grid" aria-live="polite"></div>
+
+      <aside id="notesPanel" class="notes-panel" aria-live="polite">
+        <div class="notes-head">
+          <h3>Observações</h3>
+          <div id="notesWeekLabel" class="muted"></div>
+        </div>
+
+        <div class="note-entry">
+          <input id="noteInput" type="text" placeholder="Nova observação..." />
+          <button id="addNoteBtn" class="save-btn">Adicionar</button>
+        </div>
+        <div id="notesStatus" class="muted" aria-live="polite" style="min-height:1.2rem"></div>
+        <div class="notes-actions">
+          <button id="forwardNotesBtn" class="forward-btn" title="Enviar todas para a próxima semana">Enviar tudo →</button>
+          <button id="clearAllNotesBtn" class="cancel-btn">Limpar tudo</button>
+        </div>
+
+        <div id="notesList" class="notes-list" aria-live="polite"></div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <small>Dados salvos no armazenamento local do navegador (localStorage).</small>
+  </footer>
+
+  <div id="importPreviewModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="importPreviewTitle">
+      <div class="modal-head">
+        <h3 id="importPreviewTitle">Pré-visualização de importação</h3>
+        <button id="closePreviewBtn" class="btn" title="Fechar">✕</button>
+      </div>
+      <pre id="importPreviewContent" aria-live="polite">Carregando...</pre>
+      <div class="modal-actions">
+        <button id="mergeImportBtn" class="save-btn">Mesclar</button>
+        <button id="replaceImportBtn" class="cancel-btn">Substituir</button>
+        <button id="cancelImportBtn" class="btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
